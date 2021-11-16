@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController; 
 use App\Models\Post; 
-
+use App\Models\User; 
 
 /*
 |--------------------------------------------------------------------------
@@ -45,15 +45,20 @@ Route::get('/read', function() {
     //FIND AN INSTANCE
     // $posts = Post::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
     //CREATING OBJECT AND PUSHING TO ARRAY
-    $posts = [];
-    $postsCheck = Post::all();
-    foreach($postsCheck as $p) {
-        $title = $p->title;
-        $body = $p->body;
-        $object = (object) ['title' => $title, 'content' => $body];
-        $posts[] = $object;
-    }
-    return $posts;
+    // $posts = [];
+    // $postsCheck = Post::all();
+    // foreach($postsCheck as $p) {
+    //     $title = $p->title;
+    //     $body = $p->body;
+    //     $object = (object) ['title' => $title, 'content' => $body];
+    //     $posts[] = $object;
+    // }
+    // return $posts;
+    //RETURN MULTIPLE CONDITIONAL INSTANCES
+    // $posts = Post::where('title', 'lorem ipsum 2')->get();
+    // return $posts;
+    
+    return User::find(1)->post()->get();
 });
 
 //CONTROLLER
