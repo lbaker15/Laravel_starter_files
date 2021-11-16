@@ -31,5 +31,9 @@ use App\Http\Controllers\PostController;
 // Route::get('/post/{id}', [PostController::class, 'index']);
 Route::get('/post/contact', [PostController::class, 'contact']);
 Route::get('/post/{id}', [PostController::class, 'contact_id']);
-
 Route::resource('posts', PostController::class);
+
+//ELOQUENT
+//FUNCTION
+
+//CONTROLLER
