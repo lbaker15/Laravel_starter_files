@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController; 
+use App\Models\Post; 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +18,7 @@ use App\Http\Controllers\PostController;
 
 // Route::get('/', function () {
 //     return view('welcome');
-// });
-
-// Route::get('/test', function () {
+// });// Route::get('/test', function () {
 //     return view('test');
 // });
 // Route::get('/post/{id}', function($id) {
@@ -35,5 +36,24 @@ Route::resource('posts', PostController::class);
 
 //ELOQUENT
 //FUNCTION
+Route::get('/read', function() {
+    //RETURN ALL INSTANCES OF MODEL
+    // $posts = Post::all();
+    // foreach($posts as $post) {
+    //     return $post->title;
+    // }
+    //FIND AN INSTANCE
+    // $posts = Post::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
+    //CREATING OBJECT AND PUSHING TO ARRAY
+    $posts = [];
+    $postsCheck = Post::all();
+    foreach($postsCheck as $p) {
+        $title = $p->title;
+        $body = $p->body;
+        $object = (object) ['title' => $title, 'content' => $body];
+        $posts[] = $object;
+    }
+    return $posts;
+});
 
 //CONTROLLER
